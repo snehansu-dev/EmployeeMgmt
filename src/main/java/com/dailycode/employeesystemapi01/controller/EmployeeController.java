@@ -38,4 +38,16 @@ public class EmployeeController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/employees/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+        Employee employee = employeeService.getEmployeeById(id);
+        return ResponseEntity.ok(employee);
+    }
+
+    @PutMapping("/employees/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employee){
+        employee = employeeService.updateEmployee(id, employee);
+        return ResponseEntity.ok(employee);
+    }
+
 }

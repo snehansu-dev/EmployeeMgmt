@@ -1,15 +1,26 @@
 package com.dailycode.employeesystemapi01.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.*;
+import java.util.Set;
 
+@Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "Employee")
 public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String firstName;
     private String lastName;
     private String emailId;
+    private String userName;
+    private String password;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name="Roles",
+                     joinColumns = @JoinColumn(name = "id"))
+    @Column(name="role")
+    private Set<String> roles;
+
 }

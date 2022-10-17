@@ -3,9 +3,12 @@ package com.dailycode.employeesystemapi01.services;
 import com.dailycode.employeesystemapi01.model.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
-    Employee createEmployee(Employee employee);
+    Long createEmployee(Employee employee);
+
+    Optional<Employee> findByUserName(String username);
 
     List<Employee> getAllEmployees();
 
